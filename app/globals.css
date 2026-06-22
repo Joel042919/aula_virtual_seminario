@@ -1,26 +1,89 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
+  /* Nuevos colores institucionales solicitados */
+  --color-brand-primary: var(--brand-primary);
+  --color-brand-primary-fg: var(--brand-primary-fg);
+  --color-brand-secondary: var(--brand-secondary);
+  --color-brand-accent: var(--brand-accent);
+  --color-brand-surface: var(--brand-surface);
+  --color-brand-surface-border: var(--brand-surface-border);
+
+  /* Aliases de compatibilidad */
+  --color-brand-navy: var(--brand-navy);
+  --color-brand-gold: var(--brand-gold);
+  --color-brand-slate: var(--brand-slate);
+  --color-brand-background: var(--background);
+  
+  --font-heading: var(--font-public-sans);
+  --font-body: var(--font-inter);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  /* MODO CLARO */
+  --background: #F8F9FA;          /* Fondo base gris suavísimo */
+  --foreground: #212529;          /* Texto Oscuro */
+  
+  --brand-primary: #001F5B;       /* Azul Gamaliel Oscuro */
+  --brand-primary-fg: #FFFFFF;    /* Texto sobre el primario */
+  --brand-secondary: #E01E3C;     /* Rojo Institucional */
+  --brand-accent: #C5944E;        /* Dorado Bíblico */
+  
+  --brand-surface: #FFFFFF;       /* Tarjetas Blancas */
+  --brand-surface-border: #E2E8F0;/* Borde claro */
+
+  /* Legacy */
+  --brand-navy: #001F5B;
+  --brand-gold: #C5944E;
+  --brand-slate: #64748B;
+}
+
+.dark {
+  /* MODO OSCURO (Midnight Navy) */
+  --background: #061026;          /* Midnight Navy profundísimo */
+  --foreground: #F0F4F8;          /* Blanco Azulado Suave */
+  
+  --brand-primary: #C5944E;       /* Dorado para botones primarios */
+  --brand-primary-fg: #061026;    /* Texto oscuro sobre el botón dorado */
+  --brand-secondary: #EF3E5C;     /* Rojo brillante */
+  --brand-accent: #C5944E;        /* Dorado Bíblico */
+  
+  --brand-surface: #0E1C3D;       /* Tarjetas Elevadas (Azul Noche) */
+  --brand-surface-border: #1E2D52;/* Borde de las tarjetas */
+
+  /* Legacy */
+  --brand-navy: #0E1C3D;          /* Sidebar usa brand-navy, la hacemos azul noche profundo, NO azul claro chillón */
+  --brand-gold: #C5944E;
+  --brand-slate: #94A3B8;
+}
+
+@layer base {
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-inter), ui-sans-serif, system-ui;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-public-sans), ui-sans-serif, system-ui;
+    font-weight: 600;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .dashboard-card {
+    background-color: var(--brand-surface);
+    border: 1px solid var(--brand-surface-border);
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+  }
+  
+  .sidebar-item-active {
+    color: var(--brand-accent);
+    border-left: 4px solid var(--brand-accent);
+    background-color: rgba(255, 255, 255, 0.05);
+  }
 }
