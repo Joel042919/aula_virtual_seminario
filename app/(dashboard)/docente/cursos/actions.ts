@@ -116,6 +116,10 @@ export async function saveFileMetadata(sesionId: number, filename: string, key: 
     .single();
 
   if (error) return { error: error.message };
+
+  const { revalidatePath } = await import('next/cache');
+  revalidatePath('/docente/cursos');
+
   return { success: true, archivo: data };
 }
 
@@ -184,6 +188,9 @@ export async function createSession(cursoId: number, formData: any) {
     }
   }
 
+  const { revalidatePath } = await import('next/cache');
+  revalidatePath('/docente/cursos');
+
   return { success: true, sesion: nuevaSesion };
 }
 
@@ -204,6 +211,10 @@ export async function deleteSession(sesionId: number) {
     .eq('id', sesionId);
 
   if (error) return { error: error.message };
+
+  const { revalidatePath } = await import('next/cache');
+  revalidatePath('/docente/cursos');
+
   return { success: true };
 }
 
@@ -226,6 +237,10 @@ export async function deleteFile(fileId: number, fileKey: string) {
     .eq('id', fileId);
 
   if (error) return { error: error.message };
+
+  const { revalidatePath } = await import('next/cache');
+  revalidatePath('/docente/cursos');
+
   return { success: true };
 }
 
@@ -276,6 +291,9 @@ export async function updateSession(sesionId: number, formData: any) {
 
     if (tareaError) return { error: tareaError.message };
   }
+
+  const { revalidatePath } = await import('next/cache');
+  revalidatePath('/docente/cursos');
 
   return { success: true };
 }

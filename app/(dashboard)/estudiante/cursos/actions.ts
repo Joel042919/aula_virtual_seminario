@@ -170,6 +170,10 @@ export async function saveSubmissionFile(tareaId: number, filename: string, key:
     .single();
 
   if (error) return { error: error.message };
+
+  const { revalidatePath } = await import('next/cache');
+  revalidatePath('/estudiante/cursos');
+
   return { success: true, archivo: data };
 }
 
@@ -202,6 +206,9 @@ export async function deleteSubmissionFile(archivoId: number, fileKey: string, e
   if (count === 0) {
     await supabase.from('entregas').delete().eq('id', entregaId);
   }
+
+  const { revalidatePath } = await import('next/cache');
+  revalidatePath('/estudiante/cursos');
 
   return { success: true };
 }

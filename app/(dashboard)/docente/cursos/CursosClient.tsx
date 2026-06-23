@@ -245,7 +245,7 @@ export default function CursosClient() {
           sesiones.map((sesion: any, index: number) => (
             <div key={sesion.id} className="relative md:pl-20">
               <div className="absolute left-7 top-6 w-3 h-3 bg-brand-accent rounded-full border-4 border-background hidden md:block -translate-x-1/2 z-10" />
-              <SessionBlock sesion={sesion} onUpdate={fetchSesiones} />
+              <SessionBlock sesion={sesion} onUpdate={() => fetchSesiones(true)} />
             </div>
           ))
         )}
