@@ -38,7 +38,8 @@ export const StudentSessionBlock = ({ sesion, onUpdate }: { sesion: any, onUpdat
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
       try {
-        const { url, key, error } = await getUploadUrl(file.name, file.type);
+        const uploadRes = await getUploadUrl(file.name, file.type) as any;
+        const { url, key, error } = uploadRes;
         if (error || !url) throw new Error(error || 'Error getting upload url');
 
         // Subir directamente a R2

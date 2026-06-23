@@ -112,7 +112,7 @@ export async function getCourseRegistry(cursoId: number) {
   return {
     curso: {
       nombre: curso.nombre,
-      nivel: curso.nivel?.nombre
+      nivel: (curso.nivel as any)?.nombre
     },
     estudiantes,
     sesiones: sesiones || [],

@@ -48,7 +48,7 @@ export default function EstudianteCursosClient() {
       if (!mounted) return;
       if (!res.error && res.cursos) {
         setCursos(res.cursos);
-        if (res.cursos.length > 0) setSelectedCourseId(res.cursos[0].id);
+        if (res.cursos.length > 0) setSelectedCourseId((res.cursos[0] as any).id);
       }
       setLoadingCursos(false);
     });

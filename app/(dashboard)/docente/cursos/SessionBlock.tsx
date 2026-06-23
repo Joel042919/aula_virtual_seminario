@@ -57,7 +57,7 @@ export const SessionBlock = ({ sesion, onUpdate }: { sesion: any, onUpdate: () =
 
   const handleUpdate = async () => {
     setIsUpdating(true);
-    const urlsArray = editForm.urls.split(',').map(u => u.trim()).filter(Boolean);
+    const urlsArray = editForm.urls.split(',').map((u: string) => u.trim()).filter(Boolean);
     
     await updateSession(sesion.id, {
       ...editForm,
@@ -85,7 +85,8 @@ export const SessionBlock = ({ sesion, onUpdate }: { sesion: any, onUpdate: () =
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
       try {
-        const { url, key, error } = await getUploadUrl(file.name, file.type);
+        const uploadRes = await getUploadUrl(file.name, file.type) as any;
+        const { url, key, error } = uploadRes;
         if (error || !url) throw new Error(error || 'Error getting upload url');
 
         // Subir directamente a R2

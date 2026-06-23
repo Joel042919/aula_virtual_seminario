@@ -54,7 +54,7 @@ export async function getTaskSubmissions(cursoId: number, tareaId: number) {
 
   if (!matriculados || matriculados.length === 0) return { estudiantes: [] };
 
-  const estudiantesIds = matriculados.map(m => m.estudiante.id);
+  const estudiantesIds = matriculados.map(m => (m.estudiante as any).id);
 
   // 2. Obtener entregas para esta tarea de los estudiantes matriculados
   const { data: entregas } = await supabase
@@ -84,7 +84,7 @@ export async function getTaskSubmissions(cursoId: number, tareaId: number) {
 
   // Mapear y juntar todo
   const list = await Promise.all(matriculados.map(async (m) => {
-    const estudiante = m.estudiante;
+    const estudiante = m.estudiante as any;
     const entrega = (entregas || []).find(e => e.estudiante_id === estudiante.id);
     const notaInfo = (notas || []).find(n => n.estudiante_id === estudiante.id);
 

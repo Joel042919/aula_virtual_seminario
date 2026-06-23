@@ -26,7 +26,7 @@ export const TableRow = ({ children, className }: { children: React.ReactNode; c
   </tr>
 );
 
-export const TableCell = ({ children, className,colSpan=1 }: { children: React.ReactNode; className?: string,colSpan?:number }) => (
+export const TableCell = ({ children, className,colSpan=1 }: { children?: React.ReactNode; className?: string,colSpan?:number }) => (
   <td colSpan={colSpan} className={cn("px-6 py-4 text-sm text-slate-600 dark:text-slate-300", className)}>
     {children}
   </td>
