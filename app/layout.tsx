@@ -1,8 +1,9 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Public_Sans, Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { PwaRegistry } from "@/components/PwaRegistry";
 
 const publicSans = Public_Sans({
   variable: "--font-public-sans",
@@ -15,9 +16,21 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
+export const viewport: Viewport = {
+  themeColor: "#0A1128",
+};
+
 export const metadata: Metadata = {
   title: "Aula Virtual - Instituto Gamaliel",
   description: "Sistema interno del Instituto Gamaliel",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Aula Virtual - Instituto Gamaliel",
+  },
+  icons: {
+    apple: "/img/logo_seminario.png",
+  },
 };
 
 export default function RootLayout({
@@ -27,8 +40,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" suppressHydrationWarning className={`${publicSans.variable} ${inter.variable} h-full antialiased`}>
-      <body className="h-full font-body">
+      <body className="h-full font-body" suppressHydrationWarning>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <PwaRegistry />
           {children}
         </ThemeProvider>
       </body>

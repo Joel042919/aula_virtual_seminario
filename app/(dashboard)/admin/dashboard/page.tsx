@@ -29,7 +29,7 @@ export default function AdminDashboard() {
             onClick={() => setActiveTab('pagos')}
             className={cn(
               "px-6 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all",
-              activeTab === 'pagos' ? "bg-background text-foreground shadow-sm" : "text-slate-400 hover:text-foreground"
+              activeTab === 'pagos' ? "bg-background text-foreground shadow-sm" : "text-slate-500 dark:text-slate-400 hover:text-foreground"
             )}
           >
             Pagos
@@ -38,7 +38,7 @@ export default function AdminDashboard() {
             onClick={() => setActiveTab('periodos')}
             className={cn(
               "px-6 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all",
-              activeTab === 'periodos' ? "bg-background text-foreground shadow-sm" : "text-slate-400 hover:text-foreground"
+              activeTab === 'periodos' ? "bg-background text-foreground shadow-sm" : "text-slate-500 dark:text-slate-400 hover:text-foreground"
             )}
           >
             Periodos
@@ -57,7 +57,7 @@ export default function AdminDashboard() {
         <Card className="animate-in fade-in slide-in-from-left-4 duration-500">
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-8">
             <div className="relative flex-1 max-w-lg">
-              <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+              <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 dark:text-slate-400" />
               <input 
                 type="text" 
                 placeholder="Buscar por nombre de estudiante, DNI o código..." 
@@ -82,14 +82,14 @@ export default function AdminDashboard() {
                 <TableCell className="font-bold text-foreground">
                   <div className="flex items-center gap-3">
                     <div className="w-8 h-8 rounded bg-background flex items-center justify-center">
-                      <Users size={14} className="text-slate-400" />
+                      <Users size={14} className="text-slate-500 dark:text-slate-400" />
                     </div>
                     {payment.student}
                   </div>
                 </TableCell>
                 <TableCell className="text-xs font-medium text-slate-500">Mensualidad {payment.period}</TableCell>
                 <TableCell className="font-mono font-bold text-foreground">S/ {payment.amount.toFixed(2)}</TableCell>
-                <TableCell className="text-xs text-slate-400">{payment.date}</TableCell>
+                <TableCell className="text-xs text-slate-500 dark:text-slate-400">{payment.date}</TableCell>
                 <TableCell>
                   <div className={cn(
                     "inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest",
@@ -124,13 +124,13 @@ export default function AdminDashboard() {
                   </div>
                   <div className="text-right">
                     <span className="px-4 py-1.5 bg-brand-accent text-brand-primary-fg text-[10px] font-black rounded-full uppercase tracking-widest">Activo</span>
-                    <p className="text-[10px] text-slate-400 mt-2 font-bold uppercase tracking-tight">Fin: 15 de Julio, 2026</p>
+                    <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-2 font-bold uppercase tracking-tight">Fin: 15 de Julio, 2026</p>
                   </div>
                 </div>
                 
                 <div className="p-6 border border-brand-surface-border rounded-2xl flex items-center justify-between group hover:border-slate-300 transition-colors">
                   <div className="flex items-center gap-4 opacity-50">
-                    <div className="w-12 h-12 bg-background rounded-xl flex items-center justify-center text-slate-400">
+                    <div className="w-12 h-12 bg-background rounded-xl flex items-center justify-center text-slate-500 dark:text-slate-400">
                       <Calendar size={24} />
                     </div>
                     <div>
@@ -138,10 +138,10 @@ export default function AdminDashboard() {
                       <p className="text-xs text-slate-500 font-medium">Ciclo Académico Finalizado</p>
                     </div>
                   </div>
-                  <span className="px-4 py-1.5 bg-background text-slate-400 text-[10px] font-bold rounded-full uppercase tracking-widest">Histórico</span>
+                  <span className="px-4 py-1.5 bg-background text-slate-500 dark:text-slate-400 text-[10px] font-bold rounded-full uppercase tracking-widest">Histórico</span>
                 </div>
 
-                <button className="group w-full py-8 border-2 border-dashed border-brand-surface-border rounded-2xl flex flex-col items-center justify-center gap-3 text-slate-400 hover:border-brand-accent hover:text-brand-accent transition-all">
+                <button className="group w-full py-8 border-2 border-dashed border-brand-surface-border rounded-2xl flex flex-col items-center justify-center gap-3 text-slate-500 dark:text-slate-400 hover:border-brand-accent hover:text-brand-accent transition-all">
                   <div className="p-3 bg-background rounded-full group-hover:bg-brand-accent/10 transition-colors">
                     <Plus size={24} />
                   </div>
@@ -156,17 +156,17 @@ export default function AdminDashboard() {
               <div className="space-y-10 pt-6">
                 <div className="space-y-6">
                   <div className="relative">
-                    <label className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] block mb-3">Tasa de Matrícula</label>
+                    <label className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-[0.2em] block mb-3">Tasa de Matrícula</label>
                     <div className="flex items-center gap-0 group">
-                      <div className="h-12 w-12 flex items-center justify-center bg-background border border-r-0 border-brand-surface-border rounded-l-xl text-slate-400 font-bold">S/</div>
+                      <div className="h-12 w-12 flex items-center justify-center bg-background border border-r-0 border-brand-surface-border rounded-l-xl text-slate-500 dark:text-slate-400 font-bold">S/</div>
                       <input type="number" defaultValue={250} className="w-full h-12 bg-transparent border border-brand-surface-border rounded-r-xl px-4 font-bold text-foreground focus:outline-none focus:ring-2 focus:ring-brand-accent/20" />
                     </div>
                   </div>
                   
                   <div className="relative">
-                    <label className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] block mb-3">Mensualidad General</label>
+                    <label className="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-[0.2em] block mb-3">Mensualidad General</label>
                     <div className="flex items-center gap-0 group">
-                      <div className="h-12 w-12 flex items-center justify-center bg-background border border-r-0 border-brand-surface-border rounded-l-xl text-slate-400 font-bold">S/</div>
+                      <div className="h-12 w-12 flex items-center justify-center bg-background border border-r-0 border-brand-surface-border rounded-l-xl text-slate-500 dark:text-slate-400 font-bold">S/</div>
                       <input type="number" defaultValue={450} className="w-full h-12 bg-transparent border border-brand-surface-border rounded-r-xl px-4 font-bold text-foreground focus:outline-none focus:ring-2 focus:ring-brand-accent/20" />
                     </div>
                   </div>
@@ -191,3 +191,4 @@ export default function AdminDashboard() {
     </div>
   );
 }
+

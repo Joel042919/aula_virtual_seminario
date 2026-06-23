@@ -22,24 +22,42 @@
   --color-foreground: var(--foreground);
 }
 
-:root {
-  /* MODO CLARO */
-  --background: #F8F9FA;          /* Fondo base gris suavísimo */
-  --foreground: #212529;          /* Texto Oscuro */
+/*:root {
+  --background: #F1F5F9;         
+  --foreground: #0F172A;       
   
-  --brand-primary: #001F5B;       /* Azul Gamaliel Oscuro */
-  --brand-primary-fg: #FFFFFF;    /* Texto sobre el primario */
-  --brand-secondary: #E01E3C;     /* Rojo Institucional */
-  --brand-accent: #C5944E;        /* Dorado Bíblico */
+  --brand-primary: #001F5B;      
+  --brand-primary-fg: #FFFFFF;   
+  --brand-secondary: #E01E3C;  
+  --brand-accent: #C5944E;     
   
-  --brand-surface: #FFFFFF;       /* Tarjetas Blancas */
-  --brand-surface-border: #E2E8F0;/* Borde claro */
+  --brand-surface: #FFFFFF;     
+  --brand-surface-border: #CBD5E1;
 
-  /* Legacy */
   --brand-navy: #001F5B;
   --brand-gold: #C5944E;
-  --brand-slate: #64748B;
+  --brand-slate: #475569;       
+}*/
+
+:root{
+  --background: #061026;          /* Midnight Navy profundísimo */
+  --foreground: #F0F4F8;          /* Blanco Azulado Suave */
+  
+  --brand-primary: #C5944E;       /* Dorado para botones primarios */
+  --brand-primary-fg: #061026;    /* Texto oscuro sobre el botón dorado */
+  --brand-secondary: #EF3E5C;     /* Rojo brillante */
+  --brand-accent: #C5944E;        /* Dorado Bíblico */
+  
+  --brand-surface: #0E1C3D;       /* Tarjetas Elevadas (Azul Noche) */
+  --brand-surface-border: #1E2D52;/* Borde de las tarjetas */
+
+  /* Legacy */
+  --brand-navy: #0E1C3D;          /* Sidebar usa brand-navy, la hacemos azul noche profundo, NO azul claro chillón */
+  --brand-gold: #C5944E;
+  --brand-slate: #94A3B8;
 }
+
+
 
 .dark {
   /* MODO OSCURO (Midnight Navy) */

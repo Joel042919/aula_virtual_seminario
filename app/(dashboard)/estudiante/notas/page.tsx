@@ -1,9 +1,9 @@
 import React from 'react';
-import TeacherDashboardClient from './TeacherDashboardClient';
+import NotasClient from './NotasClient';
 import { redirect } from 'next/navigation';
 import { createClient } from '@/lib/supabase/server';
 
-export default async function TeacherDashboardPage() {
+export default async function StudentNotasPage() {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
 
@@ -11,6 +11,5 @@ export default async function TeacherDashboardPage() {
     redirect('/');
   }
 
-  // Delegar carga asíncrona al componente cliente
-  return <TeacherDashboardClient />;
+  return <NotasClient />;
 }

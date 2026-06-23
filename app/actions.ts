@@ -28,9 +28,27 @@ export async function login(formData: FormData) {
   }
 
   console.log("[Login Action] Usuario autenticado correctamente ID:", data.user?.id);
-  // Redirigimos al root (que ahora será el login o dashboard según el middleware)
-  // Pero como ya estamos autenticados, el middleware verá el root y nos redirigirá al dashboard.
-  redirect("/");
+  
+  // Obtener rol para redirigir directamente
+  const { data: usuario } = await supabase
+    .from('usuarios')
+    .select('rol(nombre)')
+    .eq('id', data.user.id)
+    .single();
+
+  const rolNombre = (usuario?.rol as any)?.nombre;
+  const rolePaths: Record<string, string> = {
+      'estudiante': '/estudiante/dashboard',
+      'docente': '/docente/dashboard',
+      'admin': '/admin/dashboard',
+      'super_admin': '/superadmin'
+  };
+
+  if (rolNombre && rolePaths[rolNombre]) {
+    redirect(rolePaths[rolNombre]);
+  } else {
+    redirect("/");
+  }
 }
 
 

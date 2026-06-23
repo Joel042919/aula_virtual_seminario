@@ -31,7 +31,7 @@ export const Timeline = ({ items }: { items: TimelineItem[] }) => (
       return (
         <div key={item.id} className="relative group">
           <div className={cn(
-            "absolute -left-[41px] w-5 h-5 rounded-full border-4 border-white dark:border-slate-900",
+            "absolute -left-10.25 w-5 h-5 rounded-full border-4 border-white dark:border-slate-900",
             idx === 0 ? "bg-brand-gold ring-4 ring-brand-gold/20" : "bg-slate-300 dark:bg-slate-700"
           )} />
           
@@ -47,7 +47,7 @@ export const Timeline = ({ items }: { items: TimelineItem[] }) => (
                     {item.type.replace('_', ' ')}
                   </span>
                 </div>
-                <p className="text-xs text-slate-400 mt-1">{item.date} • {item.time}</p>
+                <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">{item.date} • {item.time}</p>
               </div>
             </div>
           </div>
@@ -56,3 +56,4 @@ export const Timeline = ({ items }: { items: TimelineItem[] }) => (
     })}
   </div>
 );
+
